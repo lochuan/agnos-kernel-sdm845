@@ -24,6 +24,18 @@
 #include "comma_common.dtsi"
 #include "dsi-panel-bantian.dtsi"
 
+/* Keep GPS on ttyHS0 and attach the Bluetooth UART as ttyHS1. */
+/ {
+  aliases {
+    hsuart0 = &qupv3_gps_uart;
+    hsuart1 = &qupv3_se6_4uart;
+  };
+};
+
+&qupv3_se6_4uart {
+  status = "ok";
+};
+
 &qupv3_se10_i2c {
   /* Not populated on mici; probing it costs ~500ms at boot. */
   /delete-node/ ti_ina321@40;
